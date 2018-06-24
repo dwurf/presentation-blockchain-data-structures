@@ -18,11 +18,11 @@ Darren Wurf
 Introduction
 ========================================================================
 
-<h1>BLAH</h1>
+.. note::
 
-Introductory material should set the expectations of this talk, i.e. we will be talking about blockchains from a software engineering perspective, to demystify them and better understand what they actually do.
+    Introductory material should set the expectations of this talk, i.e. we will be talking about blockchains from a software engineering perspective, to demystify them and better understand what they actually do.
 
-Bitcoin will be used for the examples unless noted otherwise.
+    Bitcoin will be used for the examples unless noted otherwise.
 
 ----
 
@@ -40,21 +40,28 @@ Shared ledger
 
 * Allows **shared-write** to a **distributed ledger** amongst **mutually distrusting parties**
 
-1. Executive view: A blockchain is a shared decentralized ledger, enabling 
+.. note::
+    1. Executive view: A blockchain is a shared decentralized ledger, enabling 
 business disintermediation and trustless interactions, thereby lowering 
 transaction costs
 
-The shared ledger can be seen as a series of blocks, each of which is a single document presented for signature. Each block consists of a set of transactions built on the previous set. Each succeeding block changes the state of the accounts by moving money around; so given any particular state we can create the next block by filling it with transactions that do those money moves, and signing it with a Nakamoto signature. 
+The shared ledger can be seen as a **series of blocks**, each of which is a single document presented for signature. 
 
-1. A blockchain is a peer-to-peer protocol for trust-
+Each block consists of a **set of transactions** built on the previous set.
+
+Each succeeding block changes the state of the accounts by moving money around; so given any particular state we can create the next block by filling it with transactions that do those money moves, and signing it with a Nakamoto signature. 
+
+.. note::
+    1. A blockchain is a peer-to-peer protocol for trust-
 less  execution  and  recording  of  transactions  se-
 cured by asymmetric cryptography in a consistent
-and immutable chain of blocks – the blockchain
+and immutable chain of blocks â€“ the blockchain
 developers and technology view.
 
-2. A blockchain is a shared append-only distributed
+.. note::
+    2. A blockchain is a shared append-only distributed
 database with full replication and a cryptographic
-transaction permissioning model – the IT architect
+transaction permissioning model â€“ the IT architect
 and data management view.
 
 
@@ -63,7 +70,11 @@ and data management view.
 Nakamoto signature
 ========================================================================
 
-A Nakamoto signature is a device to allow a group to agree on a shared document. To eliminate the potential for inconsistencies (disagreement), the group engages in a lottery to pick one person's version as the one true document. That lottery is effected by all members of the group racing to create the longest hash over their copy of the document. The longest hash wins the prize and also becomes a verifiable 'token' of the one true document for members of the group: the Nakamoto signature. 
+A Nakamoto signature is a device to allow a group to **agree on a shared document**. To eliminate the potential for inconsistencies (disagreement), the group engages in a **lottery** to pick one person's version as the one true document.
+
+The lottery is effected by all members of the group racing to create the **longest hash** over their copy of the document.
+
+The longest hash wins the prize and also becomes a verifiable 'token' of the one true document for members of the group: the Nakamoto signature. 
 
 ----
 
