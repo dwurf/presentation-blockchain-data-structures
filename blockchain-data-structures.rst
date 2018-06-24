@@ -196,7 +196,7 @@ The Mempool
 * To publish data on the blockchain, people sign a document (e.g. transaction) and broadcast it to nodes on the network
 * The published document must satisfy the network rules (e.g. no double-spend)
 * There is often a fee to publish, paid to the miners
-* Nodes store valid, `unconfirmed transactions<https://blockchain.info/unconfirmed-transactions>`_ in the **mempool**
+* Nodes store valid, `unconfirmed transactions <https://blockchain.info/unconfirmed-transactions>`_ in the **mempool**
 
 ----
 
