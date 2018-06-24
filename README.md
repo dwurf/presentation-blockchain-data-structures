@@ -1,7 +1,8 @@
 MLUG - Blockchain data structures
 
-Static copy: https://dwurf.github.io/presentation-blockchain-data-structures
-Use hovercraft! to run or generate a static copy of this presentation
+Static copy: https://dwurf.github.io/presentation-blockchain-data-structures/index.html
+
+Use hovercraft! to run or generate a static copy of this presentation:
 
     # Install the tool
     pip3 install hovercraft
