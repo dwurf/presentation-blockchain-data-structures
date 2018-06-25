@@ -18,18 +18,37 @@ Darren Wurf
 Introduction
 ========================================================================
 
+So I had some questions...
+
+ * What are blockchains?
+ * What makes them different?
+ * How do they work?
+
 .. note::
 
-    Introductory material should set the expectations of this talk, i.e. we will be talking about blockchains from a software engineering perspective, to demystify them and better understand what they actually do.
+    Something to do with cryptocurrency?
 
-    Bitcoin will be used for the examples unless noted otherwise.
+----
+
+Introduction
+========================================================================
+
+So I had some questions...
+
+ * **What are blockchains?**
+ * What makes them different?
+ * How do they work?
 
 ----
 
 Blockchain
 ========================================================================
 
-The **blockchain** is a **shared ledger** where each new **block of transactions** is signed with a **Nakamoto signature**.
+A **blockchain** is a **shared ledger** where each new **block of transactions** is signed with a **Nakamoto signature**.
+
+.. note::
+
+    Two concepts: Shared ledger, and Nakamoto signature
 
 ----
 
@@ -38,59 +57,52 @@ Shared ledger
 
 .. image:: timestamp-server.svg
 
-* Allows **shared-write** to a **distributed ledger** amongst **mutually distrusting parties**
+
+The shared ledger can be seen as a **series of blocks**, each of which is presented for signature when it is created.  Each block consists of a **set of transactions** built on the previous set.
+
+Each block changes the **state of the accounts** by moving money around; we can create the next block by filling it with transactions, and signing it with a Nakamoto signature. 
 
 .. note::
-    1. Executive view: A blockchain is a shared decentralized ledger, enabling 
-business disintermediation and trustless interactions, thereby lowering 
-transaction costs
+    1. Executive view: A blockchain is a shared decentralized ledger, enabling business disintermediation and trustless interactions, thereby lowering transaction costs
 
-The shared ledger can be seen as a **series of blocks**, each of which is a single document presented for signature. 
-
-Each block consists of a **set of transactions** built on the previous set.
-
-Each succeeding block changes the state of the accounts by moving money around; so given any particular state we can create the next block by filling it with transactions that do those money moves, and signing it with a Nakamoto signature. 
-
-.. note::
-    1. A blockchain is a peer-to-peer protocol for trust-
-less  execution  and  recording  of  transactions  se-
-cured by asymmetric cryptography in a consistent
-and immutable chain of blocks – the blockchain
-developers and technology view.
-
-.. note::
-    2. A blockchain is a shared append-only distributed
-database with full replication and a cryptographic
-transaction permissioning model – the IT architect
-and data management view.
-
+    2. A blockchain is a peer-to-peer protocol for trust-less  execution  and  recording  of  transactions  secured by asymmetric cryptography in a consistent and immutable chain of blocks – the blockchain developers and technology view.
+    3. A blockchain is a shared append-only distributed database with full replication and a cryptographic transaction permissioning model – the IT architect and data management view.
 
 ----
 
 Nakamoto signature
 ========================================================================
 
-A Nakamoto signature is a device to allow a group to **agree on a shared document**. To eliminate the potential for inconsistencies (disagreement), the group engages in a **lottery** to pick one person's version as the one true document.
+.. image:: Blockchain_landscape.svg
+    :height: 204px
+    :width: 542px
 
-The lottery is effected by all members of the group racing to create the **longest hash** over their copy of the document.
+A Nakamoto signature is a device to allow a group to **agree on a shared document**. To eliminate the potential for inconsistencies (disagreement), the group **engages in a lottery** to pick one person's version as the **one true document**.
 
-The longest hash wins the prize and also becomes a verifiable 'token' of the one true document for members of the group: the Nakamoto signature. 
+The lottery is effected by all members of the group racing to create the **longest hash** over their copy of the document.  The longest hash **wins the prize** and also becomes a verifiable 'token' of the one true document for members of the group: the Nakamoto signature. 
 
 ----
 
-Key points to get across
+Darren's interpretation ¯\\_(ツ)_/¯
 ========================================================================
 
- * Blockchains provide a ledger with **shared-write** capability to a bunch of entities who **do not trust each other**
+Blockchains provide a timestamped ledger with **shared-write** capability to entities who **do not trust each other**.
 
-Blockchains enable cryptocurrency
-----------------------------------------------------
+----
 
-Cryptocurrency Bitcoin had a very specific set of requirements that was not solved by any technology available at the time. Specifically, there was no way to prevent double-spending of digital currency (including traditional currencies) without a trusted intermediary maintaining and monitoring a transaction ledger.
+Questions
+========================================================================
 
-Previous attempts at designing a digital currency had not solved this problem, but one design **b-money** proposed a solution in the form of a global timestamp server, "kind of like usenet". 
+So I had some questions...
 
-Bitcoin solved this problem by introducing the concept of a global, peer-to-peer timestamp network where anyone could record transactions, but the network itself would not allowing double-spending.
+ * What are blockchains?
+ * **What makes them different?**
+ * How do they work?
+
+.. note::
+
+    Is it a database?
+    Maybe I should compare blockchains to a database
 
 ----
 
@@ -99,10 +111,19 @@ Compared to traditional databases
 
 Properties of blockchains:
 
- * Log-structured, immutable, append-only, peer-to-peer
- * Support for cryptographic controls down to the individual record level
- * ACID compliant? **No**: see `SALT <http://www.ise.tu-berlin.de/fileadmin/fg308/publications/2017/2017-tai-eberhardt-klems-SALT.pdf>`_
- * CAP theorem: AP - eventually consistent - miners vote using Proof of Work
+* Distributed
+* Secure
+* Append-only
+* Eventually consistent
+
+.. note::
+     * Support for cryptographic controls down to the individual record level
+        * Participants can publish cryptographic proofs
+        * Network rules prevent misbehaviour, such as double spending
+        * Published blocks can't be modified
+     * Log-structured, immutable, append-only, peer-to-peer
+     * ACID compliant? **No**: see `SALT <http://www.ise.tu-berlin.de/fileadmin/fg308/publications/2017/2017-tai-eberhardt-klems-SALT.pdf>`_
+     * CAP theorem: Available and Partition Tolerant - eventually consistent - miners vote using Proof of Work
 
 ----
 
@@ -111,30 +132,32 @@ Compared to traditional databases
 
 Downsides of blockchains
 
- * Very high cost per transaction (power consumption / specialised compute)
- * Very high latency for transaction confirmation (e.g. 6 blocks / 1hr)
- * Low capacity and throughput
-   * Bitcoin is limited to 1MB every 10 minutes, averaging about 7 transactions per second
- * Dependent on expensive consensus tools, e.g. through Proof of Work (mining)
- * Requires incentives to sustain the network, e.g. block reward
+* Cost
+* Latency
+* Throughput
+
+.. note::
+     * Very high cost per transaction (power consumption / specialised compute)
+     * Dependent on expensive consensus tools, e.g. through Proof of Work (mining)
+     * Very high latency for transaction confirmation (e.g. 6 blocks / 1hr)
+     * Low capacity and throughput
+       * Bitcoin is limited to 1MB every 10 minutes, averaging about 7 transactions per second
+     * Requires incentives to sustain the network, e.g. block reward
 
 ----
 
-Blockchains are a **distributed ledger**
-----------------------------------------------------
+Questions
+========================================================================
 
-Evolution of the ledger concept. Not sure how important this is for an engineering discussion. Are they a ledger or do they just allow for a ledger to be built on top of them? Without the ledger concept how would you pay miners to run and secure the network?
+So I had some questions...
 
-----
+ * What are blockchains?
+ * What makes them different?
+ * **How do they work?**
 
-Questions arising from the above
---------------------------------
+.. note::
 
- * What are the properties of these data structure?
- * How do they compare to other data structures?
- * What is the key innovation that blockchain brings to the table?
-     * From a data structure perspective
-     * From a software perspective (Don't focus on this too much, the purpose is to explain why the data structure is new)
+    Maybe looking at the data structures will help me understand
 
 ----
 
@@ -143,12 +166,9 @@ The data structures
 
  * Chain
  * Blocks
-   * Hashes and nonce
-   * Transactions (or whatever goes in the block for this blockchain)
-   * Reward
- * Merkle trees
  * Mempool
- * Structures used for peer to peer communication
+ * Transactions
+ * Merkle trees
 
 ----
 
@@ -159,7 +179,6 @@ The chain
 
 * Each block contains the hash of the previous block
 * Blocks contain a header and some transaction data. 
-* The first transaction is called the coinbase and is allowed to create new bitcoin.
 
 ----
 
@@ -178,11 +197,16 @@ The chain
 The block
 ================
 
+Bitcoin block structure
+-----------------------
+
 +---------+---------------+----------------+-------+-------+--------+
 | version | hashPrevBlock | hashMerkleRoot | nTime | nBits | nNonce |
 +---------+---------------+----------------+-------+-------+--------+
 | tx0 (coinbase)          | tx1..n                                  |   
 +---------+---------------+----------------+-------+-------+--------+
+
+The first transaction is called the coinbase and is allowed to create new bitcoin.
 
 .. code:: c++
 
@@ -194,6 +218,7 @@ The block
     uint32_t nBits;          // Difficulty target
     uint32_t nNonce;         // Increment nonce to "mine" (change the hash)
 
+
 .. note::
 
     Merkle trees: A kind of "cryptographic summary" of the data in the block.
@@ -201,25 +226,72 @@ The block
 
 ----
 
-The Mempool
+The mempool
 ================
 
-* To publish data on the blockchain, people sign a document (e.g. transaction) and broadcast it to nodes on the network
-* The published document must satisfy the network rules (e.g. no double-spend)
-* There is often a fee to publish, paid to the miners
-* Nodes store valid, `unconfirmed transactions <https://blockchain.info/unconfirmed-transactions>`_ in the **mempool**
+.. image:: mempool.png
+
+1. Participant signs transaction and broadcasts it to nodes
+2. Transaction `sits in the mempool <https://blockchain.info/unconfirmed-transactions>`_ until a miner picks it up
+3. Winning miner includes transaction in their published block
+
+.. note::
+    * To publish data on the blockchain, people sign a transaction and broadcast it to nodes on the network
+    * The published document must satisfy the network rules (e.g. no double-spend)
+    * There is often a fee to publish, paid to the miners
+    * Nodes store valid, unconfirmed transactions in the **mempool**
 
 ----
 
-The Transaction
+The transaction
+================
+
+.. image:: combining-splitting-value.svg
+
+A transaction contains:
+ * One or more inputs (utxo)
+ * One or more outputs
+ * Some addresses and signatures
+
+.. note::
+    Inputs: Source code doesn't contain "coins" as a concept, uses utxo
+
+    * arbitrary value
+
+    Outputs include change from the transaction
+
+----
+
+The transaction
 ================
 
 .. image:: transactions.svg
 
-* A transaction is a signature of the inputs and outputs of existing coins
-* Inputs are ?previous transactions?
-* Outputs are ?locking script?
-* TODO: look at the source code
+* Transactions track the history of a "coin" (utxo)
+* Coins are passed from owner to owner
+
+
+.. note::
+    Cryptographic proof of ownership
+
+    Owner 1 wants to send to owner 2:
+
+    * First block: Owner 1's proof that owner 0 send them the coin
+
+    * Second block: Owner 1 creates the transaction, including:
+
+    ** Recipient's public key
+
+    ** Owner 1's Digital Signature of:
+
+    ** * Proof of ownership (previous transaction, first block)
+
+    ** * Recipient's public key
+
+    Lose your private key -> lose your money
+
+    Private key stolen -> lose your money
+    
 
 ----
 
@@ -233,6 +305,12 @@ The Merkle Tree
 * The merkle tree summarises the data (transactions) stored in the block
 * The root of the tree is stored in the block header
 * Only the header of the block is hashed by miners, individual transactions are not
+
+.. note::
+    Complex topic. Important points:
+    * Only the block header is hashed
+    * Transactions can be pruned
+    * Merkle tree is magic that can prove a transaction belongs to a block header
 
 ----
 
@@ -274,38 +352,15 @@ Simplified Payment Verification
 
 ----
 
-The Mempool
+Learnings
 ================================
 
-----
+* Blockchains are **weird!**
+* Blockchains suck at **storing data**
+* Blockchains are great at **verifying history**
 
-:data-x: r0
-:data-y: r1000
-
-What can we actually do with blockchains?
-========================================================================
-
-* Record transactions (obviously)
-* A distributed computer - all nodes compute the exact same value, which enables:
-* Smart contracts: the ability to 
-* Proof-of-possession for some data at some time e.g. https://canyouproveit.io/
-* Creation of automatic markets, particularly for high-volume, low-value transactions
 
 ----
-
-:data-rotate: 90
-
-Code
-====
-
-From `src/primitives/block.h`:
-
-Nodes collect new transactions into a block, hash them into a hash tree,
-and scan through nonce values to make the block's hash satisfy proof-of-work
-requirements.  When they solve the proof-of-work, they broadcast the block
-to everyone and the block is added to the block chain.  The first transaction
-in the block is a special one that creates a new coin owned by the creator
-of the block.
 
 Links
 ========
@@ -316,10 +371,3 @@ Links
 * Properties of blockchains: SALT: http://www.ise.tu-berlin.de/fileadmin/fg308/publications/2017/2017-tai-eberhardt-klems-SALT.pdf
 * Real-time transaction view: https://blockchain.info/unconfirmed-transactions
 * Real-time transaction visualisation: https://bitbonkers.com/
-
-Glossary
-========
-
-
- * Byzantine fault tolerance - resistance to failures in a distributed system
- * Merkle trees
