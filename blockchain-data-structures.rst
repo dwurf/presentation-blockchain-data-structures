@@ -58,15 +58,15 @@ Shared ledger
 .. image:: timestamp-server.svg
 
 
-The shared ledger can be seen as a **series of blocks**, each of which is presented for signature when it is created.  Each block consists of a **set of transactions** built on the previous set.
+The shared ledger can be seen as a **series of blocks**, each of which is presented for signing when it is created. Each block consists of a **set of transactions**, and each block is built on the previous blocks.
 
-Each block changes the **state of the accounts** by moving money around; we can create the next block by filling it with transactions, and signing it with a Nakamoto signature. 
+Each block changes the **state of the accounts** by moving money around. We can create the next block by filling it with transactions, and signing it with a Nakamoto signature. 
 
 .. note::
+    I considered these other explanations as well, taken from the SALT whitepaper:
     1. Executive view: A blockchain is a shared decentralized ledger, enabling business disintermediation and trustless interactions, thereby lowering transaction costs
-
-    2. A blockchain is a peer-to-peer protocol for trust-less  execution  and  recording  of  transactions  secured by asymmetric cryptography in a consistent and immutable chain of blocks – the blockchain developers and technology view.
-    3. A blockchain is a shared append-only distributed database with full replication and a cryptographic transaction permissioning model – the IT architect and data management view.
+    2. The IT architect and data management view: A blockchain is a shared append-only distributed database with full replication and a cryptographic transaction permissioning model.
+    3. The blockchain developers and technology view: A blockchain is a peer-to-peer protocol for trust-less  execution  and  recording  of  transactions  secured by asymmetric cryptography in a consistent and immutable chain of blocks.
 
 ----
 
@@ -80,6 +80,9 @@ Nakamoto signature
 A Nakamoto signature is a device to allow a group to **agree on a shared document**. To eliminate the potential for inconsistencies (disagreement), the group **engages in a lottery** to pick one person's version as the **one true document**.
 
 The lottery is effected by all members of the group racing to create the **longest hash** over their copy of the document.  The longest hash **wins the prize** and also becomes a verifiable 'token' of the one true document for members of the group: the Nakamoto signature. 
+
+.. note::
+    The "longest hash" explanation didn't make sense until I realised they meant the hash of each block joined together.
 
 ----
 
@@ -365,9 +368,9 @@ Learnings
 Links
 ========
 
-* Whitepaper: https://nakamotoinstitute.org/bitcoin/ (read the references too!)
-* Explanantion: https://www.vpnmentor.com/blog/ultimate-guide-bitcoin/
+* Bitcoin Whitepaper: https://nakamotoinstitute.org/bitcoin/ (read the references too!)
+* Explanantion (user-centric): https://www.vpnmentor.com/blog/ultimate-guide-bitcoin/
 * Protocol structures: https://en.bitcoin.it/wiki/Protocol_documentation#Common_structures
 * Properties of blockchains: SALT: http://www.ise.tu-berlin.de/fileadmin/fg308/publications/2017/2017-tai-eberhardt-klems-SALT.pdf
-* Real-time transaction view: https://blockchain.info/unconfirmed-transactions
+* Real-time transaction view (mempool): https://blockchain.info/unconfirmed-transactions
 * Real-time transaction visualisation: https://bitbonkers.com/
